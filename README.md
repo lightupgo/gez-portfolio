@@ -8,8 +8,9 @@ A cinematic portfolio featuring seven short motion works by Gez.
 - Hunt Drones
 - Horse Rider
 - Cao Cao
-- Singer
+- Agent Holds
 - Gez Fight
 - Gez Football
+- Singer
 
 The site is a static, responsive presentation and can be hosted directly with GitHub Pages.
