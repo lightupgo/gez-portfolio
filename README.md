@@ -4,12 +4,12 @@ A cinematic portfolio featuring seven short motion works by Gez.
 
 ## Included films
 
-- Horse Rider
-- Hunt Drones
-- Singer
-- Arrow
-- Three Kingdoms
-- Cao Cao
 - Cyber Fly
+- Hunt Drones
+- Horse Rider
+- Cao Cao
+- Singer
+- Gez Fight
+- Gez Football
 
 The site is a static, responsive presentation and can be hosted directly with GitHub Pages.
