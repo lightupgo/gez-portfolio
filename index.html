@@ -44,9 +44,10 @@
     .work:hover .frame video { opacity:1; transform:scale(1.025); }
     .play { position:absolute; inset:50% auto auto 50%; z-index:2; transform:translate(-50%,-50%) scale(.8); width:62px; height:62px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.55); border-radius:50%; color:white; opacity:0; transition:.3s; backdrop-filter:blur(8px); }
     .work:hover .play { opacity:1; transform:translate(-50%,-50%) scale(1); }
-    .meta { display:flex; justify-content:space-between; gap:16px; padding:14px 2px 42px; }
+    .meta { display:grid; grid-template-columns:1fr auto; gap:8px 16px; padding:14px 2px 42px; }
     .title { font-size:17px; letter-spacing:-.02em; }
     .type { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.1em; }
+    .description { grid-column:1/-1; max-width:52ch; margin-top:3px; color:var(--muted); font-size:13px; line-height:1.55; }
     .about { display:grid; grid-template-columns:1fr 1fr; gap:50px; margin-top:100px; padding-top:38px; border-top:1px solid var(--line); }
     .about p { max-width:630px; margin:0; color:#bbb9b3; font-size:clamp(18px,2.3vw,29px); line-height:1.45; letter-spacing:-.025em; }
     .about-label { color:var(--muted); font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
@@ -77,7 +78,7 @@
     <nav aria-label="Main navigation"><a href="#work">Selected work</a><a href="#about">About</a></nav>
   </header>
   <section class="hero">
-    <video src="Horse Rider.mp4" autoplay muted loop playsinline poster="posters/Horse Rider.jpg"></video>
+    <video src="Cyber Fly.mp4" autoplay muted loop playsinline poster="posters/Cyber Fly.jpg"></video>
     <div class="hero-copy">
       <div class="eyebrow">Creative motion portfolio · 2026</div>
       <h1>Stories built<br>to move.</h1>
@@ -104,13 +105,13 @@
   </dialog>
   <script>
     const works = [
-      { title:'Horse Rider', file:'Horse Rider.mp4', poster:'posters/Horse Rider.jpg', type:'Cinematic / 00:10' },
-      { title:'Hunt Drones', file:'Hunt Drones.mp4', poster:'posters/Hunt Drones.jpg', type:'Future vision / 00:12' },
-      { title:'The Singer', file:'Singer.mp4', poster:'posters/Singer.jpg', type:'Performance / 00:10' },
-      { title:'Arrow', file:'Arrow.mp4', poster:'posters/Arrow.jpg', type:'Action / 00:10' },
-      { title:'Three Kingdoms', file:'3 Kingdoms.mp4', poster:'posters/3 Kingdoms.jpg', type:'Epic / 00:12' },
-      { title:'Cao Cao', file:'3 Kingdoms - 曹操.mov', poster:'posters/3 Kingdoms - 曹操.jpg', type:'Character study / 00:04' },
-      { title:'Cyber Fly', file:'Cyber Fly.mp4', poster:'posters/Cyber Fly.jpg', type:'Sci-fi / 00:12' }
+      { title:'Horse Rider', file:'Horse Rider.mp4', poster:'posters/Horse Rider.jpg', type:'Cinematic / 00:10', description:'A lone rider cuts through a mythic landscape—a compact study in momentum, scale and cinematic atmosphere.' },
+      { title:'Hunt Drones', file:'Hunt Drones.mp4', poster:'posters/Hunt Drones.jpg', type:'Future vision / 00:12', description:'Autonomous hunters sweep through a fractured future, turning surveillance technology into a tense aerial pursuit.' },
+      { title:'The Singer', file:'Singer.mp4', poster:'posters/Singer.jpg', type:'Performance / 00:10', description:'A performance portrait shaped by light, presence and rhythm, capturing the charged moment between artist and audience.' },
+      { title:'Arrow', file:'Arrow.mp4', poster:'posters/Arrow.jpg', type:'Action / 00:10', description:'Precision meets velocity in a stylised action vignette built around focus, release and the split second before impact.' },
+      { title:'Three Kingdoms', file:'3 Kingdoms.mp4', poster:'posters/3 Kingdoms.jpg', type:'Epic / 00:12', description:'An ancient world of ambition and conflict reimagined with sweeping scale, heroic tension and the weight of legend.' },
+      { title:'Cao Cao', file:'3 Kingdoms - 曹操.mov', poster:'posters/3 Kingdoms - 曹操.jpg', type:'Character study / 00:04', description:'A brief, commanding portrait of Cao Cao—strategist, ruler and enduring symbol of power in a divided age.' },
+      { title:'Cyber Fly', file:'Cyber Fly.mp4', poster:'posters/Cyber Fly.jpg', type:'Sci-fi / 00:12', description:'A mechanical creature awakens in a neon future, where organic motion and engineered intelligence become one.' }
     ];
     const grid = document.getElementById('work-grid');
     grid.innerHTML = works.map((w,i) => `
@@ -120,7 +121,11 @@
           <video src="${w.file}" muted loop playsinline preload="metadata"></video>
           <span class="play" aria-hidden="true">▶</span>
         </span>
-        <span class="meta"><span class="title">${String(i+1).padStart(2,'0')} — ${w.title}</span><span class="type">${w.type}</span></span>
+        <span class="meta">
+          <span class="title">${String(i+1).padStart(2,'0')} — ${w.title}</span>
+          <span class="type">${w.type}</span>
+          <span class="description">${w.description}</span>
+        </span>
       </button>`).join('');
     grid.querySelectorAll('.work').forEach(card => {
       const preview = card.querySelector('video');
